@@ -49,7 +49,7 @@ This repository is designed to:
 │   ├── QA_1.csv
 │   ├── QA_2.csv
 │   ├── QA_3.csv
-│   └── skyrim_characters_all_chars.csv
+│   └── skyrim_characters_all_raw.csv
 ├── models/
 │   └── (GGUF model used as second LLM judge)
 ├── results/
@@ -70,7 +70,7 @@ for_training_1 | for_training_2 | for_training_3 | for_evaluation
 - `name` and all `for_training_*` / `for_evaluation` fields are **already populated**
 - Raw `bio` text **must be obtained externally** via Mantella
 - Ground-truth metadata is sourced from *People of Skyrim*
-- The **100 × 3 QA Catastrophic Forgetting questions** are already correctly placed in `datasets/`
+- The **100 × 3 Trivia questions** are already correctly placed in `datasets/`
 
 ---
 
