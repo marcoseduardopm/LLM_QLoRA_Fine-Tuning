@@ -193,14 +193,6 @@ The output files are placed in .csv format in the outputs folder.
 
 ---
 
-## Additional Example
-
-```bash
-python3 skyrim_training_unsloth.py   --model_key qwen_32b   --lora_rank 64   --dataset_type structured
-```
-
----
-
 ## Citation
 
 If you use this repository in your research, please cite:
