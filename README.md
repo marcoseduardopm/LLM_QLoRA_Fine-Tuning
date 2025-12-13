@@ -27,7 +27,7 @@ This repository is designed to:
 - Fine-tune multiple LLMs using LoRA
 - Generate comparable outputs across models, seeds, and configurations
 - Evaluate results using both API-based and local GGUF LLM-as-a-Judge approaches
-- Produce final aggregated metrics and counterfactual (CF) analyses
+- Produce final aggregated metrics and Catastrophic Forgetting (CF) analyses
 
 ⚠️ **Important**: Due to copyright constraints (both direct and derivative content), raw biographies should be obtained directly from **Mantella**, while character metadata should be sourced from **People of Skyrim**. This repository does **not** redistribute copyrighted text.
 
@@ -70,7 +70,7 @@ for_training_1 | for_training_2 | for_training_3 | for_evaluation
 - `name` and all `for_training_*` / `for_evaluation` fields are **already populated**
 - Raw `bio` text **must be obtained externally** via Mantella
 - Ground-truth metadata is sourced from *People of Skyrim*
-- The **100 × 3 QA counterfactual questions** are already correctly placed in `datasets/`
+- The **100 × 3 QA Catastrophic Forgetting questions** are already correctly placed in `datasets/`
 
 ---
 
