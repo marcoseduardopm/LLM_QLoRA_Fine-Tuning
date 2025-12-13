@@ -3,6 +3,11 @@
 This repository provides the full experimental pipeline used to reproduce and extend the LoRA-based investigations described in the paper **(under revision at IEEE Access)** and related works.  
 It focuses on structured and unstructured biography generation, evaluation, and comparative analysis across multiple foundation models.
 
+**System Environment:**
+* **OS:** Debian 12.12
+* **CUDA:** 12.2
+* **Dependencies:** All required Python libraries are listed in `requirements.txt`
+
 ---
 
 ## Related Resources
@@ -39,6 +44,7 @@ This repository is designed to:
 ├── 4_evaluate_models_proc.py
 ├── 5_generate_results_cf.py
 ├── 6_generate_final_data.py
+├── requirements.txt
 ├── datasets/
 │   ├── QA_1.csv
 │   ├── QA_2.csv
