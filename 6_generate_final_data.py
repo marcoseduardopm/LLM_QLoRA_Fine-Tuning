@@ -176,9 +176,6 @@ else:
         df = pd.concat(all_dfs, ignore_index=True)
         print(f"Combined data: {len(df)} rows.")
 
-        # =========================================================================
-        # NEW LOGIC: Print Generation Type Ratio
-        # =========================================================================
         if 'generate_type' in df.columns:
             # Normalize strings to ensure consistent counting
             gen_counts = df['generate_type'].astype(str).str.lower().value_counts()
@@ -197,11 +194,7 @@ else:
             print("------------------------------------\n")
         else:
             print("\n[Warning] 'generate_type' column not found in dataframe.\n")
-        # =========================================================================
 
-        # =========================================================================
-        # NEW LOGIC: Force 'Unknown' to 'Incorrect' if Ground Truth exists
-        # =========================================================================
         print("Applying 'Unknown' -> 'Incorrect' override based on Ground Truth...")
 
         # 1. Map Ground Truth fields to the main dataframe
@@ -263,7 +256,6 @@ else:
             else:
                 print(f"Warning: {gguf} missing.")
         
-        # --- FIX START: Clean Numeric Scores ---
         numeric_cols = ['overall_model_score', 'biography_quality_score','overall_model_score']
         for col in numeric_cols:
             if col in df.columns:
@@ -276,7 +268,6 @@ else:
                 dropped = before_drop - len(df)
                 if dropped > 0:
                     print(f"  > Dropped {dropped} rows with invalid '{col}'.")
-        # --- FIX END ---
 
         df['rank_first_place_score'] = np.where(df['rank_first_place_2'] == df['model_key'], 1, 0)
 
@@ -284,7 +275,6 @@ else:
         # --- CASE: GEMINI ONLY ---
         print("Applying Judge Logic: gemini...")
         
-        # --- FIX START: Clean Numeric Scores ---
         numeric_cols = ['overall_model_score', 'biography_quality_score','overall_model_score']
         for col in numeric_cols:
             if col in df.columns:
@@ -296,7 +286,6 @@ else:
                 dropped = before_drop - len(df)
                 if dropped > 0:
                     print(f"  > Dropped {dropped} rows with invalid '{col}'.")
-        # --- FIX END ---
 
         df['rank_first_place_score'] = np.where(df['rank_first_place'] == df['model_key'], 1, 0)
     elif JUDGE_TYPE == 'both':
@@ -389,15 +378,6 @@ else:
     # but to support the GT logic strictly:
     df['gt_gender'] = df['character_name'].map(lambda x: gt_lookup.get(x, {}).get('gender'))
     
-    # If using 'both', we skip the complex GT replacement to keep the pure average of judges.
-    # If 'gemini' or 'local', we apply the strict GT check.
-    #if JUDGE_TYPE != 'both':
-    #    df['gender_correct_score'] = np.where(
-    #        df['gender_correct'].isin(['Female', 'Male']),
-    #        np.where(df['gender_correct'] == df['gt_gender'], 1.0, 0.0),
-    #        df['gender_correct_score']
-    #    )
-
     # Composite Scores
     df['home_city_correct_score'] = df['home_city_correct_score'].astype(float)
     df['location_correct_score'] = df['location_correct_score'].astype(float)

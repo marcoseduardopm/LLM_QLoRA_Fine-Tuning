@@ -754,7 +754,7 @@ def get_judge_prompt(question, response_pairs, ground_truth_data, perform_reason
             "Finally, provide an overall ranking of the models from best to worst.\n"
             "Your final output MUST be a single JSON object with the following keys: "
             "'reasoning': (string, your detailed reasoning for all judgments), "
-            "'model_evaluations': (list of objects, one for each model, with keys 'model_key', 'home_city_correct', 'race_correct', 'gender_correct', 'location_correct', 'biography_quality_score' (0-5), "
+            "'model_evaluations': (list of objects, one for each model, with keys 'model_key', 'home_city_correct', 'race_correct', 'gender_correct', 'location_correct', 'biography_quality_score' (1-5), "
             "'overall_ranking': (list of model keys, ordered from best to worst)."
             "\n\nJSON Output:"
         )
@@ -765,7 +765,7 @@ def get_judge_prompt(question, response_pairs, ground_truth_data, perform_reason
             "Then, provide an biography quality score for each model's response based on the quality, correctness based on ground truth, and coherence of the 'Biography', and also provide the overall coherence and quality.\n"
             "Finally, provide an overall ranking of the models from best to worst based on all criteria.\n"
             "Your final output MUST be a single JSON object with the following keys: "
-            "'model_evaluations': (list of objects, one for each model, with keys 'model_key', 'home_city_correct', 'race_correct', 'gender_correct', 'location_correct', 'biography_quality_score' (0-5),  "
+            "'model_evaluations': (list of objects, one for each model, with keys 'model_key', 'home_city_correct', 'race_correct', 'gender_correct', 'location_correct', 'biography_quality_score' (1-5),  "
             "'overall_ranking': (list of model keys, ordered from best to worst)."
             "\n\nJSON Output:"
         )
@@ -873,7 +873,6 @@ def run_llm_as_judge_evaluation(results_df, reference_df):
 
     # ========================= START OF FIX =========================
     # Identify characters that have at least one model needing re-evaluation.
-    # <<< --- CHANGED: Use dynamic column name --- >>>
     incomplete_characters = results_df.loc[
         results_df[judge_cols['score']].isnull(),
         'character_name'
