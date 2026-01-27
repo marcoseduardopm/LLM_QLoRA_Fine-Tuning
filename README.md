@@ -12,6 +12,9 @@ It focuses on structured and unstructured biography generation, evaluation, and 
 
 ## Related Resources
 
+- **Trained Models** (for inference):  
+  https://huggingface.co/collections/MarcosEdu/skyrim-lore-qlora-collection
+  
 - **Mantella** (for obtaining raw character biographies):  
   https://github.com/art-from-the-machine/Mantella
 
