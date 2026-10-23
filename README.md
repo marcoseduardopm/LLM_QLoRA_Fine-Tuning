@@ -1,6 +1,6 @@
 # LoRA Investigation for Skyrim Character Modeling
 
-This repository provides the full experimental pipeline used to reproduce and extend the LoRA-based investigations described in the paper **(under revision at IEEE Access)** and related works.  
+This repository provides the full experimental pipeline used to reproduce and extend the LoRA-based investigations described in the paper **(published in IEEE Access)** and related works.  
 It focuses on structured and unstructured biography generation, evaluation, and comparative analysis across multiple foundation models.
 
 **System Environment:**
@@ -200,4 +200,16 @@ The output files are placed in .csv format in the outputs folder.
 
 If you use this repository in your research, please cite:
 
-> **Under revision at IEEE Access**
+```bibtex
+@ARTICLE{11366663,
+  author={Monteiro, Marcos Eduardo Pivaro and Talau, Marcos and Silvério Lopes, Heitor},
+  journal={IEEE Access}, 
+  title={LLM QLoRA Fine-Tuning of Llama, DeepSeek, and Qwen: A Skyrim Case Study}, 
+  year={2026},
+  volume={14},
+  number={},
+  pages={16548-16566},
+  keywords={Adaptation models;Data models;Training;LoRa;Analytical models;Transformers;Pipelines;Large language models;Degradation;Computational modeling;Large language models;LLM fine-tuning;LoRA;DeepSeek;Llama;Qwen;game lore},
+  doi={10.1109/ACCESS.2026.3659054}}
+```
+
